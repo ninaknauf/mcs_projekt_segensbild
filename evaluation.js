@@ -3,10 +3,11 @@
 let questionElement = document.getElementById("question");
 
 let overlays = [
-    [document.getElementById("grain")],
-    [document.getElementById("water")],
-    [document.getElementById("plants")],
+    document.getElementById("grain"),
+    document.getElementById("water"),
+    document.getElementById("plants"),
 ];
+
 let nextButton = document.getElementById("next");
 let resultElement = document.getElementById("result");
 let slider = document.getElementById("slider");
@@ -82,7 +83,7 @@ function nextQuestion() {
         wordsView.style.visibility = "hidden";
         sliderView.style.visibility = "visible";
         //antwort speichern
-        answersSlider[questionIndex] = slider.value;
+        answersSlider[Math.floor(questionIndex / 2)] = slider.value;
     }
     questionIndex++;
     if (questionIndex >= questions.length) {
@@ -223,16 +224,28 @@ function generateImage() {
     //nur höchstes slider angabe für overlay nehmen
     let max = 0;
     let highestEffect = 0;
-    for(let i = 0; i < answersSlider.length; i++){
+    /*for(let i = 0; i < answersSlider.length; i++){
         if(answersSlider[i] > max){
             max = answersSlider[i];
             highestEffect = i;
         }
+    }*/
+
+    console.log("answers from slider: " + answersSlider);
+
+    highestEffect = 0
+    let highestEffectValue = answersSlider[0]
+    for(let i = 1; i < 3; i++) {
+        if(answersSlider[i] > highestEffectValue) {
+            highestEffect = i
+            highestEffectValue = answersSlider[i]
+        }
     }
+
     console.log("highest effect: " + highestEffect);
     //console.log("setting overlay: " +  overlays[highestEffect].getAttribute("id"));
     const overlay = overlays[highestEffect];
-    overlay.style.opacity = 1;
+    overlay.style.opacity = 0.8;
 
 
 
