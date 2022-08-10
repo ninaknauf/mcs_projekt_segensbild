@@ -33,6 +33,9 @@ newWin.onload = () => {
     "Welches Wort beschreibt das Gefühl von Segen für dich am besten?",
     "Wie sehr haben sich die Pflanzen nach Segen angefühlt?",
     "Welches Wort beschreibt das Gefühl von Segen für dich am besten?",
+    "Wie sehr hat sich die Musik nach Segen angefühlt?",
+    "Wie sehr haben sich das Licht und die Wärme nach Segen angefühlt?",
+      "Wie sehr hat sich die Vibration nach Segen angefühlt?"
   ];
 
   //fragen durchgehen
@@ -215,6 +218,8 @@ newWin.onload = () => {
     result.src = chooseImage();
     console.log("chosen image:" + chooseImage());
 
+    //overlay
+    /*
     let highestEffect = 0;
 
     highestEffect = 0;
@@ -229,7 +234,6 @@ newWin.onload = () => {
     const overlay = overlays[highestEffect];
     overlay.style.opacity = 0.8;
 
-    /*
     for (let i = 0; i < answersSlider.length; i++) {
         for (const overlay of overlays[i]) {
             overlay.style.opacity = answersSlider[i] / 10;
